@@ -25,6 +25,42 @@ enum EEIKAttributeType
 	Integer
 };
 
+UENUM(BlueprintType)
+enum EPermissionType
+{
+	Host,
+	Anyone,
+	Noone,
+};
+
+UENUM(BlueprintType)
+enum EPartyInviteType
+{
+	Auto UMETA(DisplayName = "Automatically accept invites"),
+	Manual UMETA(DisplayName = "Manually accept invites"),
+};
+
+USTRUCT(BlueprintType)
+struct FPartyConfiguration
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Integration Kit")
+	TEnumAsByte<EPermissionType> PartyPermissionType = EPermissionType::Anyone;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Integration Kit")
+	TEnumAsByte<EPartyInviteType> PartyInviteType = EPartyInviteType::Auto;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Integration Kit")
+	TEnumAsByte<EPermissionType> PartyInvitePermission = EPermissionType::Host;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Integration Kit")
+	int32 MaxMembers;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EOS Integration Kit")
+	bool bIsAcceptingMembers;
+};
+
 USTRUCT(BlueprintType)
 struct FEIKAttribute
 {
