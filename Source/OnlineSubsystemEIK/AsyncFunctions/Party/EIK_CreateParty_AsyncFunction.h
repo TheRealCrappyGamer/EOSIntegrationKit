@@ -15,6 +15,9 @@ class ONLINESUBSYSTEMEIK_API UEIK_CreateParty_AsyncFunction : public UBlueprintA
 	GENERATED_BODY()
 
 public:
+	TMap<FString, FEIKAttribute> PartyAttributes;
+	FPartyConfiguration Var_PartyConfiguration;
+
 	UPROPERTY(BlueprintAssignable, DisplayName = "Success")
 	FCreateParty_Delegate OnSuccess;
 	UPROPERTY(BlueprintAssignable, DisplayName = "Failure")
